@@ -14,6 +14,7 @@ export default function Home() {
 
     (async () => {
       try {
+        //@ts-ignore
         const { connected } = await app.start();
         console.log("connected", connected);
         setConnected(connected);
@@ -34,6 +35,7 @@ export default function Home() {
       })
       .catch((err: any) => console.log({ err }));
 
+    //@ts-ignore
     setRes(res);
   };
 
