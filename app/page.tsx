@@ -1,7 +1,7 @@
 "use client";
 import { CyberApp } from "@cyberlab/cyber-app-sdk";
 import React from "react";
-import { parseUnits } from "viem";
+import { parseUnits, type Hex } from "viem";
 
 export default function Home() {
   const [app, setApp] = React.useState<CyberApp>();
@@ -10,13 +10,19 @@ export default function Home() {
   const [address, setAddress] = React.useState("");
 
   React.useEffect(() => {
-    const app = new CyberApp({ name: "testapp" });
+    // window.addEventListener("message", (event) => {
+    //   console.log("event xxx", event.data);
+    // });
+
+    const app = new CyberApp({ name: "testapp", icon: "https://icon.com" });
+
+    console.log("app", app);
 
     (async () => {
       try {
         //@ts-ignore
         const { connected } = await app.start();
-        console.log("connected", connected);
+        console.log("connected", connected, app);
         setConnected(connected);
       } catch (err) {
         alert(err);
@@ -27,15 +33,17 @@ export default function Home() {
   }, []);
 
   const send = async () => {
-    const res = await app?.cyberWallet
-      ?.sendTransaction({
-        to: address,
-        value: parseUnits("0.0001", 18),
-        data: "0x",
-      })
+    const res = await app?.cyberWallet?.polygonMumbai
+      .sendTransaction(
+        {
+          to: address as Hex,
+          value: parseUnits("0.001", 18).toString(),
+          data: "0x",
+        },
+        { description: "Send token" },
+      )
       .catch((err: any) => console.log({ err }));
 
-    //@ts-ignore
     setRes(res);
   };
 
@@ -58,6 +66,7 @@ export default function Home() {
       >
         Send Transaction
       </button>
+      {res && <p>Hash: {res}</p>}
     </div>
   );
 }

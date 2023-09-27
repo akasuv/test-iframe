@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.9.3
     version: 1.9.3(typescript@5.2.2)
   '@cyberlab/cyber-app-sdk':
-    specifier: 1.2.0-beta.2
-    version: 1.2.0-beta.2(@types/node@20.6.3)(typescript@5.2.2)
+    specifier: 1.2.0-beta.6
+    version: 1.2.0-beta.6(@types/node@20.6.3)(typescript@5.2.2)
   '@types/node':
     specifier: 20.6.3
     version: 20.6.3
@@ -88,15 +88,19 @@ packages:
       - zod
     dev: false
 
-  /@cyberlab/cyber-app-sdk@1.2.0-beta.2(@types/node@20.6.3)(typescript@5.2.2):
-    resolution: {integrity: sha512-YEqiuIm6PueeWC6O5hxRLCD3ckAa3OWlEMfVi34QtNrDpQAMRVL2wr8Di5nJQ55BuMgYuYBx0PsCL+PhNJqUqQ==}
+  /@cyberlab/cyber-app-sdk@1.2.0-beta.6(@types/node@20.6.3)(typescript@5.2.2):
+    resolution: {integrity: sha512-xauSe02WdmJeOgqFSBFwLw3eyaqk3qT3JpvRxBo6l6UMyBdsGFFuT+4iimspouAvL+AN0rzNMS7hdXwtYgsaFQ==}
     dependencies:
       ts-node: 10.9.1(@types/node@20.6.3)(typescript@5.2.2)
+      viem: 1.11.0(typescript@5.2.2)
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
+      - bufferutil
       - typescript
+      - utf-8-validate
+      - zod
     dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.49.0):
